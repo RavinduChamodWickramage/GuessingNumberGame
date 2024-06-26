@@ -36,9 +36,15 @@ function submitBtn() {
     resetButton.style.display = "block";
     return;
   } else {
-    resultLabel.textContent = `Incorrect! Try again. You have ${
-      maxGuesses - guessCount
-    } ${maxGuesses - guessCount === 1 ? "attempt" : "attempts"} left.`;
+    if (userGuess < randomNumber) {
+      resultLabel.textContent = `Guessed number is less than the correct answer! Try again. You have ${
+        maxGuesses - guessCount
+      } ${maxGuesses - guessCount === 1 ? "attempt" : "attempts"} left.`;
+    } else if (userGuess > randomNumber) {
+      resultLabel.textContent = `Guessed number is more than the correct answer! Try again. You have ${
+        maxGuesses - guessCount
+      } ${maxGuesses - guessCount === 1 ? "attempt" : "attempts"} left.`;
+    }
     resultLabel.style.color = "#dc3545";
     return;
   }
